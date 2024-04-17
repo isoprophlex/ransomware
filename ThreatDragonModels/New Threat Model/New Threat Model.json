@@ -1,72 +1,82 @@
 {
-  "version": "1.0",
-  "title": "Modelo de Amenazas para Sistema de Campus Universitario",
-  "description": "Modelo de amenazas para identificar y gestionar posibles riesgos en un sistema de campus universitario.",
+  "title": "Modelo de Amenazas para Sistema de Campus Virtual",
+  "description": "Modelo de amenazas detallado para identificar y gestionar posibles riesgos en un sistema de campus universitario.",
   "model": {
     "elements": [
       {
         "type": "asset",
         "id": "database",
         "name": "Base de Datos",
-        "description": "Almacena información confidencial de estudiantes, personal y actividades del campus."
+        "description": "Almacena información confidencial de estudiantes, personal y actividades del campus.",
+        "tags": ["confidencialidad", "integridad", "disponibilidad"]
+      },
+      {
+        "type": "asset",
+        "id": "servidor",
+        "name": "Servidor de Aplicaciones",
+        "description": "Hospeda las aplicaciones críticas para el funcionamiento del campus.",
+        "tags": ["disponibilidad"]
       },
       {
         "type": "threat",
-        "id": "unauthorized_access",
+        "id": "acceso_no_autorizado",
         "name": "Acceso No Autorizado",
-        "description": "Intentos de acceso no autorizado a la base de datos.",
+        "description": "Intentos de acceso no autorizado a los sistemas del campus.",
+        "tags": ["confidencialidad", "integridad", "disponibilidad"],
         "controls": [
           {
-            "type": "preventative",
-            "description": "Implementar autenticación sólida y control de acceso basado en roles."
+            "type": "preventivo",
+            "description": "Implementar autenticación multifactorial para aumentar la seguridad de las cuentas de usuario."
           },
           {
-            "type": "detective",
-            "description": "Implementar registros de auditoría para rastrear intentos de acceso no autorizado."
+            "type": "detectivo",
+            "description": "Establecer registros de auditoría para monitorear e investigar actividades sospechosas."
           },
           {
-            "type": "corrective",
-            "description": "Bloquear y notificar intentos de acceso no autorizado."
+            "type": "correctivo",
+            "description": "Bloquear cuentas comprometidas y restablecer contraseñas según sea necesario."
           }
         ]
       },
       {
         "type": "threat",
-        "id": "data_breach",
-        "name": "Violación de Datos",
-        "description": "Divulgación no autorizada de información sensible almacenada en la base de datos.",
-        "controls": [
-          {
-            "type": "preventative",
-            "description": "Encriptar datos sensibles en reposo y en tránsito."
-          },
-          {
-            "type": "detective",
-            "description": "Implementar sistemas de detección de intrusos para identificar actividad sospechosa."
-          },
-          {
-            "type": "corrective",
-            "description": "Notificar rápidamente a las partes afectadas y tomar medidas para mitigar el impacto."
-          }
-        ]
-      },
-      {
-        "type": "threat",
-        "id": "sql_injection",
+        "id": "inyeccion_sql",
         "name": "Inyección SQL",
-        "description": "Ataques de inyección SQL dirigidos a la base de datos.",
+        "description": "Inserción de comandos SQL maliciosos en las consultas de entrada para manipular la base de datos.",
+        "tags": ["confidencialidad", "integridad"],
         "controls": [
           {
-            "type": "preventative",
-            "description": "Utilizar consultas parametrizadas y filtrar la entrada de usuario."
+            "type": "preventivo",
+            "description": "Utilizar consultas parametrizadas y procedimientos almacenados para prevenir la inyección SQL."
           },
           {
-            "type": "detective",
-            "description": "Monitorear y registrar intentos de inyección SQL."
+            "type": "detectivo",
+            "description": "Implementar sistemas de detección de intrusos para identificar patrones de ataque."
           },
           {
-            "type": "corrective",
-            "description": "Parchear las vulnerabilidades conocidas y aplicar actualizaciones de seguridad."
+            "type": "correctivo",
+            "description": "Aplicar parches de seguridad y restricciones de acceso adecuadas en la base de datos."
+          }
+        ]
+      },
+      {
+        "type": "threat",
+        "id": "denegacion_servicio",
+        "name": "Ataque de Denegación de Servicio (DoS)",
+        "description": "Intento de abrumar los recursos del sistema para que no estén disponibles para los usuarios legítimos.",
+        "tags": ["disponibilidad"],
+        "controls": [
+          {
+            "type": "preventivo",
+            "description": "Implementar soluciones de mitigación de DoS, como firewalls y sistemas de prevención de intrusiones."
+          },
+          {
+            "type": "detectivo",
+            "description": "Monitorear el tráfico de red para detectar patrones de ataque y tráfico anormal."
+          },
+          {
+            "type": "correctivo",
+            "description": "Redireccionar el tráfico malicioso y restaurar los servicios afectados lo antes posible."
           }
         ]
       }
@@ -74,21 +84,21 @@
     "relationships": [
       {
         "type": "uses",
-        "from": "unauthorized_access",
+        "from": "acceso_no_autorizado",
         "to": "database",
-        "description": "El acceso no autorizado puede comprometer la base de datos."
+        "description": "El acceso no autorizado compromete la confidencialidad e integridad de los datos almacenados."
       },
       {
         "type": "uses",
-        "from": "data_breach",
+        "from": "inyeccion_sql",
         "to": "database",
-        "description": "La violación de datos implica la exposición de información almacenada en la base de datos."
+        "description": "La inyección SQL puede permitir a un atacante acceder, modificar o eliminar datos sensibles en la base de datos."
       },
       {
         "type": "uses",
-        "from": "sql_injection",
-        "to": "database",
-        "description": "Los ataques de inyección SQL se dirigen a la base de datos para manipular datos o ejecutar comandos no autorizados."
+        "from": "denegacion_servicio",
+        "to": "servidor",
+        "description": "Un ataque de denegación de servicio puede sobrecargar el servidor, afectando su disponibilidad."
       }
     ]
   }
