@@ -19,7 +19,7 @@
         "cells": [
           {
             "position": {
-              "x": 100,
+              "x": 230,
               "y": 190.00000000000014
             },
             "size": {
@@ -31,8 +31,8 @@
                 "text": "Navegador"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -46,9 +46,23 @@
               "description": "Usuario que accede al sitio web",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "0bb2ff4e-c9ac-44da-b507-981384fbe390",
+                  "title": "Phishing - T1566",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Los usuarios externos podrían ser blanco de ataques de phishing para obtener credenciales de acceso al sitio web.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -62,11 +76,11 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor Web \nPúblico 1"
+                "text": "Servidor Web 1"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -76,21 +90,35 @@
             "id": "880b045f-896c-48f2-bcb2-a84d1eec4907",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor Web \nPúblico 1",
+              "name": "Servidor Web 1",
               "description": "Aloja la interfaz pública del sitio web para que los usuarios accedan desde Internet",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "3d32f2bb-118b-4fb8-a66f-32dba11e6d88",
+                  "title": "Explotar aplicaciones públicas - T1190",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Los servidores web públicos podrían ser vulnerables a la inyección de SQL si no están adecuadamente protegidos.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ]
             }
           },
           {
             "position": {
-              "x": 490,
+              "x": 450,
               "y": 170.00000000000014
             },
             "size": {
@@ -102,8 +130,8 @@
                 "text": "Balancedor"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -117,12 +145,26 @@
               "description": "Distribuye la carga entre los servidores web para mejorar el rendimiento y la disponibilidad",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "b411f858-2f57-4811-8d60-5956eeb28f82",
+                  "title": "Denegación de Servicio Distribuido - T1498",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Los balanceadores de carga podrían ser blanco de ataques de DDoS diseñados para abrumarlos con un gran volumen de tráfico malicioso, lo que podría provocar la indisponibilidad del servicio.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -136,67 +178,44 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor Web \nPúblico 2"
+                "text": "Servidor Web 2"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 4,
             "id": "606707c4-4c96-46e6-992f-b8ad650ce3cb",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor Web \nPúblico 2",
+              "name": "Servidor Web 2",
               "description": "Aloja la interfaz pública del sitio web para que los usuarios accedan desde Internet",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
-            },
-            "zIndex": 4
-          },
-          {
-            "position": {
-              "x": 280,
-              "y": 170.00000000000014
-            },
-            "size": {
-              "width": 160,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "Firewall de \nSitios Web"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "id": "06c694b8-b439-4859-b3ee-0f2090ba70f7",
-            "zIndex": 5,
-            "data": {
-              "type": "tm.Process",
-              "name": "Firewall de \nSitios Web",
-              "description": "Protege el acceso al sitio web y filtra el tráfico malicioso",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "f91893ea-0d6e-43c6-99d9-2e3713baa66d",
+                  "title": "Explotar aplicaciones públicas - T1190",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Los servidores web públicos podrían ser vulnerables a la inyección de SQL si no están adecuadamente protegidos.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -213,27 +232,41 @@
                 "text": "Servidor de \nAplicación 1"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
-            "id": "17d2948d-03ba-4945-b7b0-99f31114a858",
             "zIndex": 6,
+            "id": "17d2948d-03ba-4945-b7b0-99f31114a858",
             "data": {
               "type": "tm.Process",
               "name": "Servidor de \nAplicación 1",
               "description": "Ejecuta la lógica de negocio del sitio web, como la gestión de sesiones de usuario y la interacción con la base de datos",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "87cb08f2-86a9-4893-9172-55f53ac8e6a1",
+                  "title": "Explotación de servicios remotos - T1210",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Los servidores de aplicación podrían ser vulnerables a la ejecución de código remoto si no se aplican parches de seguridad adecuados, lo que podría permitir a los atacantes obtener acceso no autorizado y tomar el control de los sistemas.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -250,61 +283,48 @@
                 "text": "Servidor de \nbase de datos"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "store",
-            "id": "8fc0801f-d3d2-4d10-9666-4fd7603b82d3",
             "zIndex": 7,
+            "id": "8fc0801f-d3d2-4d10-9666-4fd7603b82d3",
             "data": {
               "type": "tm.Store",
               "name": "Servidor de \nbase de datos",
               "description": "Almacena los datos sensibles del sitio web, como la información de los usuarios, el contenido del sitio, etc",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "bed2ca4d-e16a-41d2-9e66-46d1f900cbeb",
+                  "title": "Exfiltración de Datos - T1041",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Si un atacante logra comprometer los servidores de aplicación o la red interna, podrían intentar exfiltrar datos sensibles de los servidores de base de datos, lo que podría resultar en una violación de datos.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ]
             }
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "bb8ac066-7fca-4aaa-8914-44cd6b55126e",
-            "source": {
-              "x": 290,
-              "y": 40
-            },
-            "target": {
-              "x": 280,
-              "y": 400
-            },
-            "vertices": [
-              {
-                "x": 240,
-                "y": 210
-              }
-            ]
           },
           {
             "shape": "trust-boundary-curve",
@@ -334,85 +354,6 @@
                 "y": 220
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "db2e64db-11ed-4360-a0bf-8e04fba08458",
-            "source": {
-              "x": 210,
-              "y": 220
-            },
-            "target": {
-              "cell": "06c694b8-b439-4859-b3ee-0f2090ba70f7"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "191a8bac-8588-4e35-901b-8de79537758e",
-            "source": {
-              "cell": "06c694b8-b439-4859-b3ee-0f2090ba70f7"
-            },
-            "target": {
-              "cell": "1ba9660b-4d43-4a44-8950-f3f90bdab882"
-            }
           },
           {
             "shape": "flow",
@@ -728,28 +669,78 @@
             }
           },
           {
-            "position": {
-              "x": 328,
-              "y": 70
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
             },
-            "size": {
-              "width": 112.5,
-              "height": 60
+            "id": "bb8ac066-7fca-4aaa-8914-44cd6b55126e",
+            "source": {
+              "x": 500,
+              "y": 60
             },
+            "target": {
+              "x": 490,
+              "y": 390
+            },
+            "vertices": [
+              {
+                "x": 420,
+                "y": 210
+              }
+            ]
+          },
+          {
+            "shape": "flow",
             "attrs": {
-              "text": {
-                "text": "DMZ"
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
-            "visible": true,
-            "shape": "td-text-block",
-            "id": "ed4a7e4f-2afd-4553-b2f1-0a26126f61db",
-            "zIndex": 11,
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
             "data": {
-              "type": "tm.Text",
-              "name": "DMZ",
-              "hasOpenThreats": false
-            }
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "ab469c32-6d6c-46a9-b68a-04866f6ab29b",
+            "source": {
+              "cell": "a9fb17f7-2afd-4d16-bddb-149b9d4eba94"
+            },
+            "target": {
+              "cell": "1ba9660b-4d43-4a44-8950-f3f90bdab882"
+            },
+            "vertices": [
+              {
+                "x": 420,
+                "y": 220
+              }
+            ]
           },
           {
             "position": {
@@ -767,8 +758,8 @@
             },
             "visible": true,
             "shape": "td-text-block",
-            "id": "b8b3168f-cc88-480c-a23c-8b68749306b3",
             "zIndex": 12,
+            "id": "b8b3168f-cc88-480c-a23c-8b68749306b3",
             "data": {
               "type": "tm.Text",
               "name": "Red Interna",
@@ -796,6 +787,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 13,
             "id": "c40a58dc-09cb-4298-ba42-2d01a0f05880",
             "data": {
               "type": "tm.Process",
@@ -809,8 +801,7 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": []
-            },
-            "zIndex": 13
+            }
           }
         ],
         "description": ""
@@ -818,6 +809,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "Hugo Pagola",
-    "threatTop": 0
+    "threatTop": 6
   }
 }
