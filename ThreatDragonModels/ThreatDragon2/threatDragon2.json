@@ -96,7 +96,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Base de Datos"
+                "text": "PostgreSQL DB"
               },
               "topLine": {
                 "stroke": "red",
@@ -115,7 +115,7 @@
             "id": "c70fbcd1-a0e2-4937-a558-c4979357c1fe",
             "data": {
               "type": "tm.Store",
-              "name": "Base de Datos",
+              "name": "PostgreSQL DB",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -200,7 +200,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Balanceador \nde Carga"
+                "text": "Balanceador \n- Nginx"
               },
               "body": {
                 "stroke": "red",
@@ -214,7 +214,7 @@
             "id": "20351287-8bf9-4284-85b0-9e3486973980",
             "data": {
               "type": "tm.Process",
-              "name": "Balanceador \nde Carga",
+              "name": "Balanceador \n- Nginx",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -234,7 +234,9 @@
                   "number": 7,
                   "score": ""
                 }
-              ]
+              ],
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null
             }
           },
           {
@@ -1026,12 +1028,12 @@
               "protocol": "",
               "threats": []
             },
-            "id": "c5956ef0-3df2-408a-908b-addd397e60fb",
+            "id": "a798472a-2509-46ab-b658-5edf2812e1eb",
             "source": {
-              "cell": "b22b025a-8237-4d01-a3f0-9d4c50ece6ab"
+              "cell": "6f7c5ac0-875f-4eb5-bfda-06d3b4865d23"
             },
             "target": {
-              "cell": "6f7c5ac0-875f-4eb5-bfda-06d3b4865d23"
+              "cell": "0a938baf-3633-4966-83a3-1df83f30d985"
             }
           },
           {
@@ -1065,9 +1067,9 @@
               "protocol": "",
               "threats": []
             },
-            "id": "77fd57f7-8ad1-4cc4-ab8c-a01911c53ca3",
+            "id": "3b895277-c2c3-4d1f-b0b8-2b3de4d5f394",
             "source": {
-              "cell": "4a1b1d71-838d-4bcc-a298-afb2aa12dd74"
+              "cell": "85af2711-dbf3-4724-a854-6ff08edf34e3"
             },
             "target": {
               "cell": "e30b33e3-0753-47dc-b88a-5b9e52e829bc"
@@ -1075,16 +1077,16 @@
           },
           {
             "position": {
-              "x": 814.5,
-              "y": 65
+              "x": 804.5,
+              "y": 65.00000000000003
             },
             "size": {
-              "width": 90,
+              "width": 110,
               "height": 90
             },
             "attrs": {
               "text": {
-                "text": "Servidor \nWeb"
+                "text": "Servidor Web \n- Angular"
               },
               "body": {
                 "stroke": "#333333",
@@ -1098,13 +1100,16 @@
             "id": "4a1b1d71-838d-4bcc-a298-afb2aa12dd74",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor \nWeb",
+              "name": "Servidor Web \n- Angular",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
               "privilegeLevel": "",
               "hasOpenThreats": false,
-              "threats": []
+              "threats": [],
+              "isWebApplication": false,
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null
             }
           },
           {
@@ -1118,7 +1123,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor de \nAplicación"
+                "text": "Servidor \nNode.js"
               },
               "body": {
                 "stroke": "red",
@@ -1132,7 +1137,7 @@
             "id": "85af2711-dbf3-4724-a854-6ff08edf34e3",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor de \nAplicación",
+              "name": "Servidor \nNode.js",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1214,11 +1219,11 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor \nWeb"
+                "text": "Servidor Web\n - React.js"
               },
               "body": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -1228,7 +1233,7 @@
             "id": "89c6a14c-9ad1-477e-9382-63fca19530f8",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor \nWeb",
+              "name": "Servidor Web\n - React.js",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1248,7 +1253,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor de \nAplicación"
+                "text": "Servidor \nNode.js"
               },
               "body": {
                 "stroke": "#333333",
@@ -1262,7 +1267,7 @@
             "id": "45aa1d43-4921-46a8-83f5-1e96da0c21e3",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor de \nAplicación",
+              "name": "Servidor \nNode.js",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1282,7 +1287,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Base de Datos"
+                "text": "MySQL DB"
               },
               "topLine": {
                 "strokeWidth": 1.5,
@@ -1299,7 +1304,7 @@
             "id": "dad47792-621c-4bfb-8a5e-dd4af9aba044",
             "data": {
               "type": "tm.Store",
-              "name": "Base de Datos",
+              "name": "MySQL DB",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1313,8 +1318,8 @@
           },
           {
             "position": {
-              "x": 724.5,
-              "y": -80
+              "x": 1020,
+              "y": -60
             },
             "size": {
               "width": 90,
@@ -1322,7 +1327,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Autenticación"
+                "text": "Autenticación\n - JWT"
               },
               "body": {
                 "stroke": "red",
@@ -1336,7 +1341,7 @@
             "id": "e30b33e3-0753-47dc-b88a-5b9e52e829bc",
             "data": {
               "type": "tm.Process",
-              "name": "Autenticación",
+              "name": "Autenticación\n - JWT",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1361,8 +1366,8 @@
           },
           {
             "position": {
-              "x": 734.5,
-              "y": 442
+              "x": 1090,
+              "y": 430
             },
             "size": {
               "width": 90,
@@ -1370,7 +1375,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Autenticación"
+                "text": "Autenticación\n - JWT"
               },
               "body": {
                 "stroke": "red",
@@ -1384,7 +1389,7 @@
             "id": "6f7c5ac0-875f-4eb5-bfda-06d3b4865d23",
             "data": {
               "type": "tm.Process",
-              "name": "Autenticación",
+              "name": "Autenticación\n - JWT",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1428,6 +1433,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 25,
             "id": "13dba046-8ee3-48d1-8734-31a171c05366",
             "data": {
               "type": "tm.Process",
@@ -1452,8 +1458,7 @@
                   "score": ""
                 }
               ]
-            },
-            "zIndex": 25
+            }
           },
           {
             "position": {
@@ -1466,7 +1471,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Balanceador \nde Carga"
+                "text": "Balanceador \n- Nginx"
               },
               "body": {
                 "stroke": "red",
@@ -1476,10 +1481,11 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 26,
             "id": "e6e5adb4-d459-4bf1-b268-ce29fdc2617c",
             "data": {
               "type": "tm.Process",
-              "name": "Balanceador \nde Carga",
+              "name": "Balanceador \n- Nginx",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1500,8 +1506,7 @@
                   "score": ""
                 }
               ]
-            },
-            "zIndex": 26
+            }
           },
           {
             "position": {
@@ -1514,7 +1519,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor \nWeb"
+                "text": "Servidor Web \n- Angular"
               },
               "body": {
                 "stroke": "#333333",
@@ -1524,18 +1529,18 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 27,
             "id": "b22b025a-8237-4d01-a3f0-9d4c50ece6ab",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor \nWeb",
+              "name": "Servidor Web \n- Angular",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
               "privilegeLevel": "",
               "hasOpenThreats": false,
               "threats": []
-            },
-            "zIndex": 27
+            }
           },
           {
             "position": {
@@ -1548,7 +1553,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Servidor de \nAplicación"
+                "text": "Servidor \nNode.js"
               },
               "body": {
                 "stroke": "red",
@@ -1558,10 +1563,11 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 32,
             "id": "0a938baf-3633-4966-83a3-1df83f30d985",
             "data": {
               "type": "tm.Process",
-              "name": "Servidor de \nAplicación",
+              "name": "Servidor \nNode.js",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1582,8 +1588,7 @@
                   "score": ""
                 }
               ]
-            },
-            "zIndex": 32
+            }
           },
           {
             "position": {
@@ -1596,7 +1601,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Base de Datos"
+                "text": "PostgreSQL DB"
               },
               "topLine": {
                 "stroke": "red",
@@ -1611,10 +1616,11 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 33,
             "id": "675c1d1c-9460-4cdf-a225-e401bf500261",
             "data": {
               "type": "tm.Store",
-              "name": "Base de Datos",
+              "name": "PostgreSQL DB",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1638,8 +1644,7 @@
                   "score": ""
                 }
               ]
-            },
-            "zIndex": 33
+            }
           }
         ]
       }
