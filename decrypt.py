@@ -17,12 +17,20 @@ def decrypt(items, key):
             file_write.write(decrypted_data)
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def decrypt_files(input_key):
+    key = load_key()
+    print(key.decode('UTF-8'))
+    
+    if key.decode('UTF-8') != input_key:
+      return False
+    
     path_to_encrypt = './files'
     os.remove(path_to_encrypt + '/' + 'README.txt')
 
     items = os.listdir(path_to_encrypt)
     full_path = [path_to_encrypt + '/' + item for item in items]
 
-    key = load_key()
     decrypt(full_path, key)
+    return True
+

