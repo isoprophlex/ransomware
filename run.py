@@ -2,6 +2,7 @@ from cryptography.fernet import Fernet
 from tkinter import *
 from tkinter import ttk
 import os
+import glob
 
 
 # ************************ ENCRIPTACION ******************************
@@ -31,8 +32,10 @@ def encrypt(items, key):
 
 def encrypt_files():
     path_to_encrypt = './files'
-    items = os.listdir(path_to_encrypt)
-    full_path = [path_to_encrypt + '/' + item for item in items]
+    #items = os.listdir(path_to_encrypt)
+    #full_path = [path_to_encrypt + '/' + item for item in items]
+    full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
+    full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
     generate_key()
     key = load_key()
 
@@ -69,8 +72,10 @@ def decrypt_files(input_key):
     path_to_encrypt = './files'
     os.remove(path_to_encrypt + '/' + 'README.txt')
 
-    items = os.listdir(path_to_encrypt)
-    full_path = [path_to_encrypt + '/' + item for item in items]
+    #items = os.listdir(path_to_encrypt)
+    #full_path = [path_to_encrypt + '/' + item for item in items]
+    full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
+    full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
 
     decrypt(full_path, key)
     return True
