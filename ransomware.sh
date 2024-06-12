@@ -1,4 +1,4 @@
-# Este archivo puede accederse desde la siguiente url: https://tinyurl.com/lkt51
+# Este archivo puede accederse desde la siguiente url: https://tinyurl.com/cvfwas
 # Mover a Directorio Objetivo
 cd Documentos/Facultad
 
