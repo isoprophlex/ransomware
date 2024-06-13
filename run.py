@@ -99,7 +99,7 @@ def decrypt_files(input_key):
     full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
     full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
 
-    decrypt(full_path, input_key)
+    decrypt(full_path, input_key.encode('utf-8'))
     return True
 
 
